@@ -21,6 +21,7 @@ powerdata <- powerdata[powerdata$DateTime >=
 
 
 ## Plot the scatterplots and create PNG file
+png(filename = "plot3.png")
 plot(powerdata$DateTime, powerdata$Sub_metering_1, type = "n",
      xlab = "", ylab = "Energy sub metering")
 points(powerdata$DateTime, powerdata$Sub_metering_1, type = "l", col = "black")
@@ -28,4 +29,4 @@ points(powerdata$DateTime, powerdata$Sub_metering_2, type = "l", col = "red")
 points(powerdata$DateTime, powerdata$Sub_metering_3, type = "l", col = "blue")
 legend("topright", pch = "-", col = c("black","red","blue"),
        legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_2"))
-png(filename = "plot3.png")
+dev.off()

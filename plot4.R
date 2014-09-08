@@ -20,6 +20,7 @@ powerdata <- powerdata[powerdata$DateTime >=
                              !is.na(powerdata$DateTime),]
 
 ## Set plots and create PNG file
+png(filename = "plot4.png")
 par(mfrow = c(2,2))
 plot(powerdata$DateTime, powerdata$Global_active_power, type = "l",
      xlab = "", ylab = "Global Active Power (kilowatts)")
@@ -34,4 +35,4 @@ legend("topright", pch = "-", col = c("black","red","blue"),
        legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_2"))
 plot(powerdata$DateTime, powerdata$Global_reactive_power, type = "l",
      xlab = "datetime", ylab = "Global_reactive_power")
-png(filename = "plot4.png")
+dev.off()

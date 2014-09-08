@@ -21,6 +21,7 @@ powerdata <- powerdata[powerdata$DateTime >=
 
 
 ## Plot the histogram and create PNG file
+png(filename = "plot1.png")
 hist(powerdata$Global_active_power, main = "Global Active Power",
      xlab = "Global Actie Power (kilowatts)", ylab = "Frequency", col = "red")
-png(filename = "plot1.png")
+dev.off()
