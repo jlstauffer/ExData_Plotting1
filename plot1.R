@@ -10,14 +10,11 @@ powerdata <- read.table(file = "./data/household_power_consumption.txt",
                         header = TRUE, sep = ";", na.strings = "?")
 
 ## Create typed Date column and restrict data to 2007-02-01 through 2007-02-02
-powerdata$DateTime <- strptime(paste(as.character(powerdata$Date),
-                                     as.character(powerdata$Time)),
-                               format = "%d/%m/%Y %H:%M:%S")
-powerdata <- powerdata[powerdata$DateTime >=
-                             strptime("2007-02-01",format = "%Y-%m-%d") &
-                             powerdata$DateTime <
-                             strptime("2007-02-03", format = "%Y-%m-%d") &
-                             !is.na(powerdata$DateTime),]
+powerdata$DateTime <- strptime(paste(powerdata$Date, powerdata$Time)
+                               , format = "%d/%m/%Y %H:%M:%S")
+powerdata <- subset(powerdata,
+                    DateTime >= strptime("2007-02-01",format = "%Y-%m-%d")
+                    & DateTime < strptime("2007-02-03",format = "%Y-%m-%d"))
 
 
 ## Plot the histogram and create PNG file
